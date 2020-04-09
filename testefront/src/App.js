@@ -8,17 +8,18 @@ function App() {
     });
 
 
-    async function loadRepositories() {
-      const response = await fetch(`http://localhost:8000/?a=${repositories.aeroportos}&n=${repositories.nuvens}&t=${repositories.area}`);
-      const data = await response.json();
-
-      setRepositories({...repositories, ret: data });
-    }
+    
 
     useEffect(() => {
+
+      async function loadRepositories() {
+        const response = await fetch(`http://localhost:8000/?a=${repositories.aeroportos}&n=${repositories.nuvens}&t=${repositories.area}`);
+        const data = await response.json();
+  
+        setRepositories({ ret: data });
+      }
+
       if(repositories.nuvens || repositories.area || repositories.aeroportos) {
-
-
         loadRepositories();
       }
     }, [repositories.nuvens, repositories.area, repositories.aeroportos]);
