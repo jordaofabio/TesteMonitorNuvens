@@ -26,16 +26,15 @@ function App() {
 
 
     function validation(aeroportos, nuvens, area){
-      area = area.toLowerCase().split('x')
-      if ((area.length === 0 || parseInt(area[0].trim()) < 10 || parseInt(area[1].trim()) < 10) ||
+      area = area.toLowerCase().split('x');
+      
+      if (!aeroportos || !nuvens || !area ||
+      (area || area.length === 0 || parseInt(area[0].trim()) < 10 || parseInt(area[1].trim()) < 10) ||
           aeroportos < 3 || nuvens < 4) {
             setRepositories({...repositories, formIsValid: false, showMessage: true});
-
             return false;
       } 
-
        return true;
-
     }
     
 
